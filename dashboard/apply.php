@@ -138,8 +138,8 @@
             echo '<h1>View Apply #'.$row["id"].' | Supporter apply</h1>
             <br>';
             if($row["status"] == "0"){
-              echo '<a class="ui inverted green button" href="apply.php?accept='.$row["id"].'&type=dev">Accept</a>
-              <a class="ui inverted red button" href="apply.php?deny='.$row["id"].'&type=dev">Deny</a>';
+              echo '<a class="ui inverted green button" href="apply.php?accept='.$row["id"].'&type=sup">Accept</a>
+              <a class="ui inverted red button" href="apply.php?deny='.$row["id"].'&type=sup">Deny</a>';
             } else if($row["status"] == "1"){
               echo '<h4 style="color: red">Apply rejected</h4>';
             } else if($row["status"] == "2"){
@@ -213,8 +213,8 @@
             echo '<h1>View Apply #'.$row["id"].' | Builder apply</h1>
             <br>';
             if($row["status"] == "0"){
-              echo '<a class="ui inverted green button" href="apply.php?accept='.$row["id"].'&type=dev">Accept</a>
-              <a class="ui inverted red button" href="apply.php?deny='.$row["id"].'&type=dev">Deny</a>';
+              echo '<a class="ui inverted green button" href="apply.php?accept='.$row["id"].'&type=builder">Accept</a>
+              <a class="ui inverted red button" href="apply.php?deny='.$row["id"].'&type=builder">Deny</a>';
             } else if($row["status"] == "1"){
               echo '<h4 style="color: red">Apply rejected</h4>';
             } else if($row["status"] == "2"){

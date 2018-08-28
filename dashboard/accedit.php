@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Accounts</title>
+    <title>Edit Account</title>
     <link rel="stylesheet" href="../assets/css/semantic.min.css">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
   </head>
@@ -66,59 +66,43 @@
   </a>
 </div>
     <div class="ui container">
-      <h1>Accounts</h1>
+      <h1>Edit account</h1>
       <br>
-      <a href="addaccount.php" class="ui primary button">Add account</a>
-      <table class="ui table">
-  <thead>
-    <tr><th>ID</th>
-    <th>Username</th>
-    <th>Email</th>
-    <th>Rank</th>
-    <th>Banned</th>
-    <th>Created at</th>
-    <th>Last login</th>
-    <th>Manage</th>
-  </tr></thead>
-  <tbody>
       <?php
-      include('../database.php');
-      $abfrage = "SELECT * FROM accounts";
-      $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
-      $data = 0;
-      while($row = mysqli_fetch_array($ergebnis)){
-        echo '<tr><td>'.$row["id"].'</td>';
-        echo '<td>'.$row["username"].'</td>';
-        if($row["email"] == "null"){
-          echo '<td>No email</td>';
+      if(isset($_POST["changerank"])){
+        $rank = $_POST["rank"];
+        $id = $_POST["id"];
+        include('../database.php');
+        $abfrage = "UPDATE accounts SET rank = '$rank' WHERE id = '$id'";
+        $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+        echo '<div class="ui success message">
+  <div class="header">
+    Success
+  </div>
+  <p>The rank of the user was changed.</p>
+</div>';
+        exit;
+      }
+      if(isset($_GET["id"])){
+        if(isAccExistByID($_GET["id"])){
+          echo "<h1>".getUsernameByID($_GET["id"])." | #".$_GET["id"]."</h1>";
+          echo '<form class="ui form" action="accedit.php" method="post">
+          <p>New rank:</p>
+          <select name="rank">
+            <option value="0">Applicant</option>
+            <option value="1">Team</option>
+            <option value="2">Admin</option>
+          </select><br>
+          <input type="hidden" value="'.$_GET["id"].'" name="id">
+          <button class="ui button" type="submit" name="changerank">Change rank</button>
+          </form>';
         } else {
-          echo '<td>'.$row["email"].'</td>';
+          echo '<h1 style="color: red">The requested account does not exists.</h1>';
         }
-        if($row["rank"] == "3"){
-          echo '<td>Masteruser</td>';
-        } else if($row["rank"] == "2"){
-          echo '<td>Admin</td>';
-        } else if($row["rank"] == "1"){
-          echo '<td>Team</td>';
-        } else if($row["rank"] == "0"){
-          echo '<td>Applicant</td>';
-        }
-        if($row["ban"] == "1"){
-          echo '<td>Yes</td>';
-        } else if($row["ban"] == "0"){
-          echo '<td>No</td>';
-        }
-        echo '<td>'.date("D dS M Y", $row["created_at"]).'</td>';
-        if($row["lastlogin"] == "null"){
-          echo '<td>No login</td>';
-        } else {
-          echo '<td>'.date("D dS M Y", $row["lastlogin"]).'</td>';
-        }
-        echo '<td><a class="ui button" href="accedit.php?id='.$row["id"].'">Edit</a></td><tr>';
+      } else {
+        echo '<h1 style="color: red">No account requested.</h1>';
       }
        ?>
-  </tbody>
-</table>
     </div>
   </body>
 </html>
