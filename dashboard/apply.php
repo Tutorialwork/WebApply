@@ -151,6 +151,8 @@
             <p>'.$row["username"].'</p>
             <h3>How old are you?</h3>
             <p>'.$row["age"].'</p>
+            <h3>Email</h3>
+            <p>'.getEmailByUsername($row["username"]).'</p>
             <h3>What languages do you speak?</h3>
             <p>'.$row["lang"].'</p>
             <h3>How many weeks do you can spend in the server?</h3>
@@ -188,6 +190,8 @@
             <p>'.$row["username"].'</p>
             <h3>How old are you?</h3>
             <p>'.$row["age"].'</p>
+            <h3>Email</h3>
+            <p>'.getEmailByUsername($row["username"]).'</p>
             <h3>Since when do you develop?</h3>
             <p>'.$row["since"].'</p>
             <h3>What programming languages do you use?</h3>
@@ -226,6 +230,8 @@
             <p>'.$row["username"].'</p>
             <h3>How old are you?</h3>
             <p>'.$row["age"].'</p>
+            <h3>Email</h3>
+            <p>'.getEmailByUsername($row["username"]).'</p>
             <h3>Since when do you build?</h3>
             <p>'.$row["since"].'</p>
             <h3>How many weeks do you can spend in the server?</h3>

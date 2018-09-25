@@ -57,4 +57,12 @@ function isAccExistByID($id){
     return true;
   }
 }
+function getEmailByUsername($username){
+  include('../database.php');
+  $abfrage = "SELECT email FROM accounts WHERE username = '$username'";
+  $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+  while($row = mysqli_fetch_array($ergebnis)){
+    return $row["email"];
+  }
+}
  ?>

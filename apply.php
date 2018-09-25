@@ -36,6 +36,8 @@
           <input type="text" name="username" placeholder="Username" required><br>
           <label for="age">How old are you?</label><br>
           <input type="text" name="age" placeholder="Age" required><br>
+          <label for="email">Your Email?</label><br>
+          <input type="email" name="email" placeholder="Email to contact you" required><br>
           <label for="lang">What languages do you speak?</label><br>
           <input type="text" name="lang" placeholder="Languages" required><br>
           <label for="online">How many weeks do you can spend in the server?</label><br>
@@ -70,6 +72,8 @@
             <input type="text" name="username" placeholder="Username" required><br>
             <label for="age">How old are you?</label><br>
             <input type="text" name="age" placeholder="Age" required><br>
+            <label for="email">Your Email?</label><br>
+            <input type="email" name="email" placeholder="Email to contact you" required><br>
             <label for="age">Since when do you develop?</label><br>
             <input type="text" name="since" placeholder="In years" required><br>
             <label for="lang">What programming languages do you use?</label><br>
@@ -106,6 +110,8 @@
             <input type="text" name="username" placeholder="Username" required><br>
             <label for="age">How old are you?</label><br>
             <input type="text" name="age" placeholder="Age" required><br>
+            <label for="email">Your Email?</label><br>
+            <input type="email" name="email" placeholder="Email to contact you" required><br>
             <label for="age">Since when do you build?</label><br>
             <input type="text" name="since" placeholder="In years" required><br>
             <label for="online">How many weeks do you can spend in the server?</label><br>
@@ -139,6 +145,7 @@
             $why = mysqli_real_escape_string($mysqli, $_POST["why"]);
             $experience = mysqli_real_escape_string($mysqli, $_POST["experience"]);
             $others = mysqli_real_escape_string($mysqli, $_POST["others"]);
+            $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
             $time = time();
             //Data save in database
             $abfrage2 = "INSERT INTO supporter (status, name, username, age, lang, onlinetime, why, experience, others, created_at) VALUES ('0', '$name', '$username', '$age', '$lang', '$online', '$why', '$experience', '$others', $time)";
@@ -146,12 +153,18 @@
             $genpw = generateRandomString();
             $hashpw = password_hash($genpw, PASSWORD_BCRYPT);
             $time = time();
-            $abfrage3 = "INSERT INTO accounts (username, email, password, rank, ban, token, created_at, lastlogin) VALUES ('$username', 'null', '$hashpw', '0', '0', 'null', '$time', 'null')";
+            $abfrage3 = "INSERT INTO accounts (username, email, password, rank, ban, token, created_at, lastlogin) VALUES ('$username', '$email', '$hashpw', '0', '0', 'null', '$time', 'null')";
             $ergebnis3 = mysqli_query($mysqli,$abfrage3) or die(mysqli_error($mysqli));
             echo '<h5 class="container" style="color: green;">We have received your apply as supporter.</h5><br>';
             echo '<h1 class="container">We have generated you a account to check your apply.</h1><br>
             <h1 class="container">Username: '.$username.'</h1><br>
             <h1 class="container">Password: '.$genpw.'</h1>';
+            echo '<br><form class="container" action="dashboard/index.php?login" method="post">
+              <input type="hidden" name="username" value="'.$username.'">
+              <input type="hidden" name="password" value="'.$genpw.'">
+              <button type="submit" class="myButton">Login</button>
+            </form>';
+
           } else if($_POST["rank"] == "developer"){
             $name = mysqli_real_escape_string($mysqli, $_POST["name"]);
             $username = mysqli_real_escape_string($mysqli, $_POST["username"]);
@@ -162,6 +175,7 @@
             $why = mysqli_real_escape_string($mysqli, $_POST["why"]);
             $experience = mysqli_real_escape_string($mysqli, $_POST["experience"]);
             $others = mysqli_real_escape_string($mysqli, $_POST["others"]);
+            $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
             $time = time();
             //Data save in database
             $abfrage2 = "INSERT INTO developer (status, name, username, age, since, lang, online, why, experience, others, created_at) VALUES ('0', '$name', '$username', '$age', '$since', '$lang', '$online', '$why', '$experience', '$others', $time)";
@@ -169,14 +183,17 @@
             $genpw = generateRandomString();
             $hashpw = password_hash($genpw, PASSWORD_BCRYPT);
             $time = time();
-            $abfrage3 = "INSERT INTO accounts (username, email, password, rank, ban, token, created_at, lastlogin) VALUES ('$username', 'null', '$hashpw', '0', '0', 'null', '$time', 'null')";
+            $abfrage3 = "INSERT INTO accounts (username, email, password, rank, ban, token, created_at, lastlogin) VALUES ('$username', '$email', '$hashpw', '0', '0', 'null', '$time', 'null')";
             $ergebnis3 = mysqli_query($mysqli,$abfrage3) or die(mysqli_error($mysqli));
             echo '<h5 class="container" style="color: green;">We have received your apply as developer.</h5><br>';
             echo '<h1 class="container">We have generated you a account to check your apply.</h1><br>
             <h1 class="container">Username: '.$username.'</h1><br>
             <h1 class="container">Password: '.$genpw.'</h1>';
-
-
+            echo '<br><form class="container" action="dashboard/index.php?login" method="post">
+              <input type="hidden" name="username" value="'.$username.'">
+              <input type="hidden" name="password" value="'.$genpw.'">
+              <button type="submit" class="myButton">Login</button>
+            </form>';
 
           } else if($_POST["rank"] == "builder"){
             $name = mysqli_real_escape_string($mysqli, $_POST["name"]);
@@ -188,6 +205,7 @@
             $experience = mysqli_real_escape_string($mysqli, $_POST["experience"]);
             $example =mysqli_real_escape_string($mysqli, $_POST["example"]);
             $others = mysqli_real_escape_string($mysqli, $_POST["others"]);
+            $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
             $time = time();
             //Data save in database
             $abfrage2 = "INSERT INTO builder (status, name, username, age, since, online, why, experience, example, others, created_at) VALUES ('0', '$name', '$username', '$age', '$since', '$online', '$why', '$experience', '$example', '$others', $time)";
@@ -195,12 +213,18 @@
             $genpw = generateRandomString();
             $hashpw = password_hash($genpw, PASSWORD_BCRYPT);
             $time = time();
-            $abfrage3 = "INSERT INTO accounts (username, email, password, rank, ban, token, created_at, lastlogin) VALUES ('$username', 'null', '$hashpw', '0', '0', 'null', '$time', 'null')";
+            $abfrage3 = "INSERT INTO accounts (username, email, password, rank, ban, token, created_at, lastlogin) VALUES ('$username', '$email', '$hashpw', '0', '0', 'null', '$time', 'null')";
             $ergebnis3 = mysqli_query($mysqli,$abfrage3) or die(mysqli_error($mysqli));
             echo '<h5 class="container" style="color: green;">We have received your apply as builder.</h5><br>';
             echo '<h1 class="container">We have generated you a account to check your apply.</h1><br>
             <h1 class="container">Username: '.$username.'</h1><br>
             <h1 class="container">Password: '.$genpw.'</h1>';
+            echo '<br><form class="container" action="dashboard/index.php?login" method="post">
+              <input type="hidden" name="username" value="'.$username.'">
+              <input type="hidden" name="password" value="'.$genpw.'">
+              <button type="submit" class="myButton">Login</button>
+            </form>';
+
           }
         } else {
           echo '<h5 class="container" style="color: red;">An error occurred while sending the application.</h5>';
