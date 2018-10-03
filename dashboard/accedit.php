@@ -83,19 +83,60 @@
 </div>';
         exit;
       }
+      if(isset($_POST["ban"])){
+        $id = $_POST["id"];
+        include('../database.php');
+        $abfrage = "UPDATE accounts SET ban = '1' WHERE id = '$id'";
+        $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+        echo '<div class="ui success message">
+  <div class="header">
+    Success
+  </div>
+  <p>The user was banned.</p>
+</div>';
+        exit;
+      }
+      if(isset($_POST["unban"])){
+        $id = $_POST["id"];
+        include('../database.php');
+        $abfrage = "UPDATE accounts SET ban = '0' WHERE id = '$id'";
+        $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+        echo '<div class="ui success message">
+  <div class="header">
+    Success
+  </div>
+  <p>The user was unban.</p>
+</div>';
+        exit;
+      }
       if(isset($_GET["id"])){
         if(isAccExistByID($_GET["id"])){
-          echo "<h1>".getUsernameByID($_GET["id"])." | #".$_GET["id"]."</h1>";
-          echo '<form class="ui form" action="accedit.php" method="post">
-          <p>New rank:</p>
-          <select name="rank">
-            <option value="0">Applicant</option>
-            <option value="1">Team</option>
-            <option value="2">Admin</option>
-          </select><br>
-          <input type="hidden" value="'.$_GET["id"].'" name="id">
-          <button class="ui button" type="submit" name="changerank">Change rank</button>
-          </form>';
+          if(!isMasteruser(getUsernameByID($_GET["id"]))){
+            echo "<h1>".getUsernameByID($_GET["id"])." | #".$_GET["id"]."</h1>";
+            echo '<form class="ui form" action="accedit.php" method="post">
+            <p>New rank:</p>
+            <select name="rank">
+              <option value="0">Applicant</option>
+              <option value="1">Team</option>
+              <option value="2">Admin</option>
+            </select><br>
+            <input type="hidden" value="'.$_GET["id"].'" name="id">
+            <button class="ui button" type="submit" name="changerank">Change rank</button>
+            </form>';
+            if(isBanned(getUsernameByID($_GET["id"]))){
+              echo '<br><form class="ui form" action="accedit.php" method="post">
+              <input type="hidden" value="'.$_GET["id"].'" name="id">
+              <button class="ui button green" type="submit" name="unban">Unban</button>
+              </form>';
+            } else {
+              echo '<br><form class="ui form" action="accedit.php" method="post">
+              <input type="hidden" value="'.$_GET["id"].'" name="id">
+              <button class="ui button red" type="submit" name="ban">Ban</button>
+              </form>';
+            }
+          } else {
+            echo '<h1 style="color: red">You cannot edit the masteruser.</h1>';
+          }
         } else {
           echo '<h1 style="color: red">The requested account does not exists.</h1>';
         }

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>View Apply</title>
     <link rel="stylesheet" href="../assets/css/semantic.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
   </head>
   <body>
@@ -209,6 +210,27 @@
               echo '<p>'.$row["others"].'</p>';
             }
             echo "<br>";
+            echo "<h1>Comments</h1><p>Do you want to share your opinion with the team? Write a comment and say if you want to accept or deny the apply.</p><br>";
+
+            if(!hasAlreadyCommented($_SESSION["username"], $id, $type)){
+              echo '<form action="apply.php?submitcomment" method="post">
+                <h3>Your opinion</h3>
+                <select name="opinion">
+                  <option value="1">Accept</option>
+                  <option value="0">Deny</option>
+                </select><br>
+                <h3>Your comment</h3>
+                <textarea name="comment" rows="8" cols="95"></textarea><br>
+                <input type="hidden" name="type" value="'.$type.'">
+                <input type="hidden" name="applyid" value="'.$id.'">
+                <button type="submit" class="myButton">Comment</button><br>
+                <br>
+              </form>';
+            } else {
+              echo "<p><strong>You have already commented the apply.</strong></p>";
+            }
+
+            showComments($id, $type);
           }
         } else if($type == "builder"){
           $abfrage = "SELECT * FROM builder WHERE id = '$id';";
@@ -252,6 +274,13 @@
           }
         } else {
           echo '<h1 style="color: red">Wrong apply type was given.</h1>';
+        }
+      } else if(isset($_GET["submitcomment"])){
+        if(isset($_POST["comment"]) && isset($_POST["opinion"]) && isset($_POST["applyid"]) && isset($_POST["type"])){
+          insertComment($_POST["comment"], $_POST["opinion"], $_POST["applyid"], $_POST["type"], $_SESSION["username"]);
+          header('Location: apply.php?id='.$_POST["applyid"].'&type='.$_POST["type"]);
+        } else {
+          echo "No comment was submitted";
         }
       } else {
         if(!isset($_GET["accept"]) & !isset($_GET["deny"])){

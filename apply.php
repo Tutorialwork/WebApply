@@ -7,6 +7,23 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>
   <body>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script>
+    function checkAvailability() {
+      $("#loaderIcon").show();
+      jQuery.ajax({
+      url: "assets/js/usernamecheck.php",
+      data:'username='+$("#username").val(),
+      type: "POST",
+      success:function(data){
+        $("#user-availability-status").html(data);
+        $("#loaderIcon").hide();
+      },
+      error:function (){}
+      });
+    }
+    </script>
+    <p><img src="assets/images/LoaderIcon.gif" id="loaderIcon" style="display:none" /></p>
     <section id="apply">
       <?php
 
@@ -26,14 +43,21 @@
         <div class="box">
 
         </div>
-        <div class="box">
-        <h1>Apply as Supporter</h1>
+        <div class="box">';
+        if(isset($_GET["msg"])){
+          $msg = $_GET["msg"];
+          echo '<div class="error"><br><p>'.$msg.'</p><br></div>';
+        }
+        echo '<h1>Apply as Supporter</h1>
         <p>Now fill out the form and send it. We wish you luck :)</p>
         <form action="apply.php?send" method="post">
           <label for="name">What is your name?</label><br>
           <input type="text" name="name" placeholder="Your name" data-value-missing="Test" required><br>
+
           <label for="username">What is your name in Minecraft?</label><br>
-          <input type="text" name="username" placeholder="Username" required><br>
+          <input type="text" name="username" id="username" onBlur="checkAvailability()" placeholder="Username" required>
+          <label for="username" id="user-availability-status"></label><br>
+
           <label for="age">How old are you?</label><br>
           <input type="text" name="age" placeholder="Age" required><br>
           <label for="email">Your Email?</label><br>
@@ -68,8 +92,11 @@
           <form action="apply.php?send" method="post">
             <label for="name">What is your name?</label><br>
             <input type="text" name="name" placeholder="Your name" data-value-missing="Test" required><br>
+
             <label for="username">What is your name in Minecraft?</label><br>
-            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="text" name="username" id="username" onBlur="checkAvailability()" placeholder="Username" required>
+            <label for="username" id="user-availability-status"></label><br>
+
             <label for="age">How old are you?</label><br>
             <input type="text" name="age" placeholder="Age" required><br>
             <label for="email">Your Email?</label><br>
@@ -106,8 +133,11 @@
           <form action="apply.php?send" method="post">
             <label for="name">What is your name?</label><br>
             <input type="text" name="name" placeholder="Your name" data-value-missing="Test" required><br>
+
             <label for="username">What is your name in Minecraft?</label><br>
-            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="text" name="username" id="username" onBlur="checkAvailability()" placeholder="Username" required>
+            <label for="username" id="user-availability-status"></label><br>
+
             <label for="age">How old are you?</label><br>
             <input type="text" name="age" placeholder="Age" required><br>
             <label for="email">Your Email?</label><br>
@@ -147,6 +177,14 @@
             $others = mysqli_real_escape_string($mysqli, $_POST["others"]);
             $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
             $time = time();
+
+            //Check database
+            include('assets/includes/System.php');
+            if(isUsernameExistRootDirectory($username)){
+              header("Location: apply.php?supporter&msg=The username is already taken.");
+              exit;
+            }
+
             //Data save in database
             $abfrage2 = "INSERT INTO supporter (status, name, username, age, lang, onlinetime, why, experience, others, created_at) VALUES ('0', '$name', '$username', '$age', '$lang', '$online', '$why', '$experience', '$others', $time)";
             $ergebnis2 = mysqli_query($mysqli,$abfrage2) or die(mysqli_error($mysqli));
@@ -177,6 +215,14 @@
             $others = mysqli_real_escape_string($mysqli, $_POST["others"]);
             $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
             $time = time();
+
+            //Check database
+            include('assets/includes/System.php');
+            if(isUsernameExistRootDirectory($username)){
+              header("Location: apply.php?supporter&msg=The username is already taken.");
+              exit;
+            }
+
             //Data save in database
             $abfrage2 = "INSERT INTO developer (status, name, username, age, since, lang, online, why, experience, others, created_at) VALUES ('0', '$name', '$username', '$age', '$since', '$lang', '$online', '$why', '$experience', '$others', $time)";
             $ergebnis2 = mysqli_query($mysqli,$abfrage2) or die(mysqli_error($mysqli));
@@ -207,6 +253,14 @@
             $others = mysqli_real_escape_string($mysqli, $_POST["others"]);
             $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
             $time = time();
+
+            //Check database
+            include('assets/includes/System.php');
+            if(isUsernameExistRootDirectory($username)){
+              header("Location: apply.php?supporter&msg=The username is already taken.");
+              exit;
+            }
+
             //Data save in database
             $abfrage2 = "INSERT INTO builder (status, name, username, age, since, online, why, experience, example, others, created_at) VALUES ('0', '$name', '$username', '$age', '$since', '$online', '$why', '$experience', '$example', '$others', $time)";
             $ergebnis2 = mysqli_query($mysqli,$abfrage2) or die(mysqli_error($mysqli));

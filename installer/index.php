@@ -85,10 +85,21 @@
           lastlogin VARCHAR(100)
           )";
 
+          $abfrage5 = "CREATE TABLE IF NOT EXISTS comments(
+      id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY UNIQUE,
+      applyid INT(6),
+      type VARCHAR(100),
+      comment VARCHAR(2500),
+      author VARCHAR(100),
+      written_at VARCHAR(100),
+      opinion VARCHAR(50)
+      )";
+
           $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
           $ergebnis2 = mysqli_query($mysqli,$abfrage2) or die(mysqli_error($mysqli));
           $ergebnis3 = mysqli_query($mysqli,$abfrage3) or die(mysqli_error($mysqli));
           $ergebnis4 = mysqli_query($mysqli,$abfrage4) or die(mysqli_error($mysqli));
+          $ergebnis5 = mysqli_query($mysqli,$abfrage5) or die(mysqli_error($mysqli));
                 $user = mysqli_real_escape_string($mysqli, $_POST["username"]);
                 $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
                 $pw = mysqli_real_escape_string($mysqli, $_POST["password"]);

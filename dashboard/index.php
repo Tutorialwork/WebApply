@@ -54,17 +54,30 @@
             while($row = mysqli_fetch_array($ergebnis)){
                   $dbpw = $row["password"];
                   if(password_verify($pw, $dbpw)){
-                    $time = time();
-                    $abfrage = "UPDATE accounts SET lastlogin = '$time' WHERE username = '$user'";
-                    $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
-                    session_start();
-                    $_SESSION['username'] = $user;
-                    if($row["rank"] == "0"){
-                      header('Location: yourapply.php');
-                      exit;
+                    include('../assets/includes/System.php');
+                    if(isBanned($user)){
+                      echo '<div class="ui icon error message">
+                          <i class="lock icon"></i>
+                          <div class="content">
+                            <div class="header">
+                              Login failed!
+                            </div>
+                            <p>You are banned!</p>
+                          </div>
+                        </div>';
                     } else {
-                      header('Location: applications.php');
-                      exit;
+                      $time = time();
+                      $abfrage = "UPDATE accounts SET lastlogin = '$time' WHERE username = '$user'";
+                      $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+                      session_start();
+                      $_SESSION['username'] = $user;
+                      if($row["rank"] == "0"){
+                        header('Location: yourapply.php');
+                        exit;
+                      } else {
+                        header('Location: applications.php');
+                        exit;
+                      }
                     }
                   } else {
                     echo '<div class="ui icon warning message">
