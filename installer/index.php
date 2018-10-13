@@ -95,11 +95,19 @@
       opinion VARCHAR(50)
       )";
 
+      $abfrage6 = "CREATE TABLE IF NOT EXISTS profileimages(
+  id INT(6) UNIQUE,
+  username VARCHAR(255),
+  url VARCHAR(255),
+  updated_at VARCHAR(255)
+  )";
+
           $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
           $ergebnis2 = mysqli_query($mysqli,$abfrage2) or die(mysqli_error($mysqli));
           $ergebnis3 = mysqli_query($mysqli,$abfrage3) or die(mysqli_error($mysqli));
           $ergebnis4 = mysqli_query($mysqli,$abfrage4) or die(mysqli_error($mysqli));
           $ergebnis5 = mysqli_query($mysqli,$abfrage5) or die(mysqli_error($mysqli));
+          $ergebnis6 = mysqli_query($mysqli,$abfrage6) or die(mysqli_error($mysqli));
                 $user = mysqli_real_escape_string($mysqli, $_POST["username"]);
                 $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
                 $pw = mysqli_real_escape_string($mysqli, $_POST["password"]);

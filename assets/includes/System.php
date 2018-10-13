@@ -115,7 +115,7 @@ function showComments($applyid, $type){
   $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
   while($row = mysqli_fetch_array($ergebnis)){
     echo '<h1 class="ui header">
-    <img class="ui medium circular image" src="https://i.imgur.com/BS1pqFp.jpg">
+    <img class="ui circular image" src="'.getPBUrl($_SESSION["username"]).'">
     '.$row["author"].'</h1>';
     echo '<p>'.$row["comment"].'</p>';
     if($row["opinion"] == "1"){
@@ -128,6 +128,68 @@ function showComments($applyid, $type){
 function hasAlreadyCommented($username, $applyid, $type){
   include('../database.php');
   $abfrage = "SELECT * FROM comments WHERE applyid = '$applyid' AND type = '$type' AND author = '$username'";
+  $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+  $data = 0;
+  while($row = mysqli_fetch_object($ergebnis)){
+    $data++;
+  }
+  if($data == 0){
+    return false;
+  } else {
+    return true;
+  }
+}
+function hasPB($username){
+  include('../database.php');
+  $abfrage = "SELECT * FROM profileimages WHERE username = '$username'";
+  $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+  while($row = mysqli_fetch_array($ergebnis)){
+    if($row["url"] == "null"){
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+function hasPBByID($id){
+  include('../database.php');
+  $abfrage = "SELECT * FROM profileimages WHERE id = '$id'";
+  $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+  while($row = mysqli_fetch_array($ergebnis)){
+    if($row["url"] == "null"){
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+function getPBUrl($username){
+  include('../database.php');
+  $abfrage = "SELECT * FROM profileimages WHERE username = '$username'";
+  $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+  while($row = mysqli_fetch_array($ergebnis)){
+    if($row["url"] == "null"){
+      return "https://i.imgur.com/BS1pqFp.jpg";
+    } else {
+      return $row["url"];
+    }
+  }
+}
+function getPBUrlByID($id){
+  include('../database.php');
+  $abfrage = "SELECT * FROM profileimages WHERE id = '$id'";
+  $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+  while($row = mysqli_fetch_array($ergebnis)){
+    if($row["url"] == "null"){
+      return "https://i.imgur.com/BS1pqFp.jpg";
+    } else {
+      return $row["url"];
+    }
+  }
+}
+function hasPBDBEntry($username){
+  include('../database.php');
+  $abfrage = "SELECT * FROM profileimages WHERE username = '$username'";
   $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
   $data = 0;
   while($row = mysqli_fetch_object($ergebnis)){

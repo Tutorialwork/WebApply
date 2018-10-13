@@ -5,6 +5,8 @@
     <title>Accounts</title>
     <link rel="stylesheet" href="../assets/css/semantic.min.css">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   </head>
   <body>
     <?php
@@ -114,7 +116,7 @@
         } else {
           echo '<td>'.date("D dS M Y", $row["lastlogin"]).'</td>';
         }
-        echo '<td><a class="ui button" href="accedit.php?id='.$row["id"].'">Edit</a></td><tr>';
+        echo '<td><a href="accedit.php?id='.$row["id"].'"><i class="material-icons">edit</i></a></td><tr>';
       }
        ?>
   </tbody>

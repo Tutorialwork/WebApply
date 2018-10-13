@@ -321,6 +321,9 @@
     } else {
       $uuid = $_SESSION["uuid"];
     }
+    if($uuid == ""){
+      $uuid = "8667ba71-b85a-4004-af54-457a9734eed7";
+    }
     echo '<h1 class="ui header">
     <img class="ui medium circular image" src="https://crafatar.com/avatars/'.$uuid.'">
     '.$_SESSION["username"].'

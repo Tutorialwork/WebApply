@@ -32,6 +32,15 @@
 
       <?php
 
+      include('../database.php');
+      $abfrage = "CREATE TABLE IF NOT EXISTS profileimages(
+  id INT(6) UNIQUE,
+  username VARCHAR(255),
+  url VARCHAR(255),
+  updated_at VARCHAR(255)
+  )";
+          $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+
         if(isset($_GET["login"])){
           include('../database.php');
 
@@ -69,8 +78,14 @@
                       $time = time();
                       $abfrage = "UPDATE accounts SET lastlogin = '$time' WHERE username = '$user'";
                       $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+                      $id = $row["id"];
+                      $username = $row["username"];
+                      if(!hasPBDBEntry($username)){
+                        $abfrage2 = "INSERT INTO profileimages (id, username, url, updated_at) VALUES ('$id', '$username', 'null', 'null')";
+                        $ergebnis2 = mysqli_query($mysqli,$abfrage2) or die(mysqli_error($mysqli));  
+                      }
                       session_start();
-                      $_SESSION['username'] = $user;
+                      $_SESSION['username'] = $username;
                       if($row["rank"] == "0"){
                         header('Location: yourapply.php');
                         exit;

@@ -5,6 +5,8 @@
     <title>Applications</title>
     <link rel="stylesheet" href="../assets/css/semantic.min.css">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   </head>
   <body>
     <?php
@@ -64,6 +66,10 @@
     <div class="ui container">
       <h1>Applications</h1>
       <br>
+      <a class="ui labeled icon button" href="archive.php">
+        <i class="archive icon"></i>
+        Archive
+      </a>
       <hr>
       <br>
       <div class="ui three column doubling grid" id="space">
@@ -75,7 +81,7 @@
       <th>ID</th>
       <th>Username</th>
       <th>Applied at</th>
-      <th>View apply</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -90,7 +96,7 @@
         echo '<td>'.$row["id"].'</td>
         <td>'.$row['username'].'</td>';
         echo '<td>'.date("D dS M Y", $row["created_at"]).'</td>';
-        echo '<td><a class="ui button" href="apply.php?id='.$row["id"].'&type=sup">Open</a></td>';
+        echo '<td><a href="apply.php?id='.$row["id"].'&type=sup"><i class="material-icons">visibility</i></a></td>';
         echo "</tr>";
       }
       if($data == 0){
@@ -108,7 +114,7 @@
       <th>ID</th>
       <th>Username</th>
       <th>Applied at</th>
-      <th>View apply</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -123,7 +129,7 @@
       echo '<td>'.$row["id"].'</td>
       <td>'.$row['username'].'</td>';
       echo '<td>'.date("D dS M Y", $row["created_at"]).'</td>';
-      echo '<td><a class="ui button" href="apply.php?id='.$row["id"].'&type=dev">Open</a></td>';
+      echo '<td><a href="apply.php?id='.$row["id"].'&type=dev"><i class="material-icons">visibility</i></a></td>';
       echo "</tr>";
     }
     if($data == 0){
@@ -141,7 +147,7 @@
       <th>ID</th>
       <th>Username</th>
       <th>Applied at</th>
-      <th>View apply</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -156,7 +162,7 @@
       echo '<td>'.$row["id"].'</td>
       <td>'.$row['username'].'</td>';
       echo '<td>'.date("D dS M Y", $row["created_at"]).'</td>';
-      echo '<td><a class="ui button" href="apply.php?id='.$row["id"].'&type=builder">Open</a></td>';
+      echo '<td><a href="apply.php?id='.$row["id"].'&type=builder"><i class="material-icons">visibility</i></a></td>';
       echo "</tr>";
     }
     if($data == 0){

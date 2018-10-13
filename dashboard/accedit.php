@@ -109,6 +109,20 @@
 </div>';
         exit;
       }
+      if(isset($_POST["deletepb"])){
+        $id = $_POST["id"];
+        $time = time();
+        include('../database.php');
+        $abfrage = "UPDATE profileimages SET url = 'null', updated_at = '$time' WHERE id = '$id'";
+        $ergebnis = mysqli_query($mysqli,$abfrage) or die(mysqli_error($mysqli));
+        echo '<div class="ui success message">
+  <div class="header">
+    Success
+  </div>
+  <p>The Profile Image from the user was deleted.</p>
+</div>';
+        exit;
+      }
       if(isset($_GET["id"])){
         if(isAccExistByID($_GET["id"])){
           if(!isMasteruser(getUsernameByID($_GET["id"]))){
@@ -123,6 +137,15 @@
             <input type="hidden" value="'.$_GET["id"].'" name="id">
             <button class="ui button" type="submit" name="changerank">Change rank</button>
             </form>';
+            if(hasPBByID($_GET["id"])){
+              echo '<br>
+              <h1>Profile Image</h1><br>
+              <img class="ui circular image" src="'.getPBUrlByID($_GET["id"]).'" width="100" height="100"><br>
+              <form class="ui form" action="accedit.php" method="post">
+              <input type="hidden" value="'.$_GET["id"].'" name="id">
+              <button class="ui button" type="submit" name="deletepb">Delete Profile Image</button>
+              </form>';
+            }
             if(isBanned(getUsernameByID($_GET["id"]))){
               echo '<br><form class="ui form" action="accedit.php" method="post">
               <input type="hidden" value="'.$_GET["id"].'" name="id">
