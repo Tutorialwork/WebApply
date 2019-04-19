@@ -1,0 +1,228 @@
+/*
+  Created by Tutorialwork
+  https://YouTube.com/Tutorialwork
+  © 2019 - WebApply
+*/
+html, body{
+  font-family: Arial;
+  background-color: #212121;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.content{
+  color: #263238;
+  background-color: #F5F5F5;
+  border-radius: 25px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding: 40px;
+  width: 350px;
+}
+.content h1{
+  font-size: 40px;
+  position: relative;
+  font-weight: 300;
+  display: inline-block;
+}
+.content h5{
+  font-size: 30px;
+  position: relative;
+  font-weight: 300;
+  display: inline-block;
+}
+.content p{
+  font-size: 17px;
+}
+#pw{
+  text-decoration: none;
+  color: #1E88E5;
+  font-size: 17px;
+}
+#pw{
+  transition: all 0.2s;
+  color: #3949AB;
+}
+.content hr{
+  border-top: 1px dashed #8c8b8b;
+}
+.btn{
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid black;
+  color: black;
+}
+.btn:hover{
+  color: white;
+  background-color: black;
+  transition: all 0.2s;
+}
+.btn-red{
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid #c0392b;
+  color: black;
+}
+.btn-red:hover{
+  color: white;
+  background-color: #e74c3c;
+  transition: all 0.2s;
+}
+.btn-green{
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid #27ae60;
+  color: black;
+}
+.btn-green:hover{
+  color: white;
+  background-color: #2ecc71;
+  transition: all 0.2s;
+}
+form input{
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 3px solid #263238;
+  outline: none;
+  width: 325px;
+}
+form input:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+}
+form input:disabled{
+  background-color: #95a5a6;
+  color: white;
+}
+form textarea{
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 3px solid #263238;
+  outline: none;
+  width: 325px;
+  resize: none;
+  font-family: Arial;
+}
+form textarea:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+}
+form button{
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid #263238;
+  color: black;
+  margin-top: 10px;
+  width: 350px;
+  font-size: 20px;
+  color: #263238;
+}
+form button:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+  background-color: #263238;
+  color: white;
+}
+.iconbutton{
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 3px;
+  border: 3px solid #263238;
+  color: black;
+  margin-top: 10px;
+  width: 50px;
+  font-size: 20px;
+  color: #263238;
+}
+.iconbutton:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+  background-color: #263238;
+  color: white;
+}
+#status{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+table{
+  background-color: black;
+}
+tr{
+  background-color: #212121;
+  color: white;
+}
+td{
+  padding: 5px;
+  background-color: white;
+  color: black;
+}
+.error{
+  background-color: #ff6b81;
+  padding: 20px;
+  border: 4px solid #ff4757;
+  border-radius: 7px;
+  color: #2f3542,
+}
+.success{
+  background-color: #7bed9f;
+  padding: 20px;
+  border: 4px solid #2ed573;
+  border-radius: 7px;
+  color: #57606f;
+}
+.loginicon{
+  float: right;
+  color: black;
+  margin-left: 7px;
+}
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li{
+  background-color: #dcdde1;
+  padding: 7px;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  display: inline;
+  margin-right: 3px;
+}
+li:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+  background-color: #263238;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+li a:hover{
+  color: white;
+}
+.active a{
+  color: white;
+}
+.active{
+  background: #263238;
+}
