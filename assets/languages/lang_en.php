@@ -19,7 +19,6 @@ define("PANEL_POSITIVE", "<p>Good news :) <br>
   We have accepted your application.
 </p>");
 define("PANEL_NEUTRAL", "<p>Currently is your application in processing.</p><br>");
-define("INTERVIEW", "Interview");
 //////////////////////////////////////////
 // login.php
 //////////////////////////////////////////
@@ -83,7 +82,7 @@ define("EMAILBLACK_TITLE", "Email blacklisted");
 define("EMAILBLACK_MESSAGE", "Please use your normal email");
 define("USERNAME_TITLE", "Username taken");
 define("USERNAME_MESSAGE", "This username is already taken");
-define("EMAIL_TITLE", "Email taken");
+define("EMAIL_ERR_TITLE", "Email taken");
 define("EMAIL_MESSAGE", "This email is already taken");
 define("PW_TITLE", "Password to short");
 define("PW_MESSAGE", "Your password must be at least 6 character");

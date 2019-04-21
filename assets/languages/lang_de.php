@@ -19,7 +19,6 @@ define("PANEL_POSITIVE", "<p>Gute Nachrichten :) <br>
   Es freut uns dir mitzuteilen das wird deine Bewerbung angenommen haben.
 </p>");
 define("PANEL_NEUTRAL", "<p>Derzeit ist deine Bewerbung in Bearbeitung.</p><br>");
-define("INTERVIEW", "Bewerbungsgespräch");
 //////////////////////////////////////////
 // login.php
 //////////////////////////////////////////
@@ -83,7 +82,7 @@ define("EMAILBLACK_TITLE", "Email gesperrt");
 define("EMAILBLACK_MESSAGE", "Bitte benutze deine richtige Email");
 define("USERNAME_TITLE", "Benutzername vergeben");
 define("USERNAME_MESSAGE", "Dieser Benutzername ist leider schon vergeben");
-define("EMAIL_TITLE", "Email vergeben");
+define("EMAIL_ERR_TITLE", "Email vergeben");
 define("EMAIL_MESSAGE", "Diese Email ist leider schon vergeben");
 define("PW_TITLE", "Passwort zu kurz");
 define("PW_MESSAGE", "Dein Passwort muss mindestens 6 Zeichen lang sein");

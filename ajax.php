@@ -32,7 +32,7 @@ if(isset($_GET["sendapply"])){
               displayToast("error", PW_TITLE, PW_MESSAGE);
             }
           } else {
-            displayToast("error", EMAIL_TITLE, EMAIL_MESSAGE);
+            displayToast("error", EMAIL_ERR_TITLE, EMAIL_MESSAGE);
           }
         } else {
           displayToast("error", USERNAME_TITLE, USERNAME_MESSAGE);
