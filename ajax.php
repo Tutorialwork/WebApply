@@ -2,7 +2,9 @@
 require("datamanager.php");
 require('assets/languages/lang_'.getSetting("lang").'.php');
 if(isset($_GET["sendapply"])){
-  if($_POST["age"] > 12){
+  $agestr = getSetting("age");
+  $age = intval($agestr);
+  if($_POST["age"] > $age - 1){
     if(strlen($_POST["username"]) > 2 && strlen($_POST["name"]) > 2){
       $split = explode('@', $_POST["email"]);
       $checkmail = file_get_contents("https://v2.trashmail-blacklist.org/check/json/".$split[1]);

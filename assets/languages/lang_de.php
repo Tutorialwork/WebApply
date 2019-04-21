@@ -48,7 +48,9 @@ define("FORGOT_EMAIL_ERR", "Diese Email wurde nicht gefunden.");
 define("EMAIL_TITLE", "Passwort zurücksetzen");
 $token = RandomStringGenerator(24);
 $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-define("EMAIL", "Klicke auf den untenstehenden Link um ein neues Passwort zu setzen. <br> $url?token=$token&email=".$_POST["email"]);
+if(isset($_POST["email"])){
+  define("EMAIL", "Klicke auf den untenstehenden Link um ein neues Passwort zu setzen. <br> $url?token=$token&email=".$_POST["email"]);
+}
 //////////////////////////////////////////
 // settings.php
 //////////////////////////////////////////
@@ -65,6 +67,7 @@ define("BUILDER_APPLY", "Builder Bewerbungen");
 define("ENABLED", "Aktiviert");
 define("DISABLED", "Deaktiviert");
 define("SAVE", "Speichern");
+define("MINAGE", "Min. Alter bei Bewerbung");
 //////////////////////////////////////////
 // usersettings.php
 //////////////////////////////////////////
@@ -75,7 +78,7 @@ define("NEWPW_FORM", "Neues Passwort festlegen");
 // ajax.php
 //////////////////////////////////////////
 define("TOOYOUNG_TITLE", "Zu jung");
-define("TOOYOUNG_MESSAGE", "Du musst mindestens 13 Jahre alt sein");
+define("TOOYOUNG_MESSAGE", "Du musst mindestens ".getSetting("age")." Jahre alt sein");
 define("NAMESHORT_TITLE", "Name zu kurz");
 define("NAMESHORT_MESSAGE", "Dein Vorname und Benutzername müssen mindestens 3 Zeichen lang sein");
 define("EMAILBLACK_TITLE", "Email gesperrt");

@@ -115,7 +115,7 @@ else
         <input type="text" name="host" value="localhost" required>
         <input type="text" name="database" placeholder="Database" required>
         <input type="text" name="user" placeholder="User" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password">
         <button type="submit" name="submit">Continue</button>
       </form>
     </div>

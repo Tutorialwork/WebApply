@@ -43,6 +43,7 @@ if(!isset($_SESSION["username"])){
         setSetting("sup", $_POST["sup"]);
         setSetting("dev", $_POST["dev"]);
         setSetting("builder", $_POST["builder"]);
+        setSetting("age", $_POST["age"]);
         ?>
         <script type="text/javascript">
         toastr.options = {
@@ -96,10 +97,14 @@ if(!isset($_SESSION["username"])){
       <hr>
       <form action="settings.php" method="post">
         <?php
+        //Fixed whitespaces
         $name = str_replace(' ', '', getSetting("name"));
+        $age = str_replace(' ', '', getSetting("age"));
          ?>
         <p><?php echo SERVERNAME ?></p>
         <input type="text" name="servername" placeholder="<?php echo SERVERNAME ?>" value="<?php echo htmlspecialchars($name); ?>" required>
+        <p><?php echo MINAGE; ?></p>
+        <input type="text" name="age" placeholder="<?php echo FORM_AGE; ?>" value="<?php echo htmlspecialchars($age); ?>" required>
         <p><?php echo LANGUAGE ?></p>
         <select name="lang">
           <?php

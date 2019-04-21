@@ -57,11 +57,13 @@ isset($_SESSION["user"]) && isset($_SESSION["password"])){
         $settings3 = $mysql->prepare("INSERT INTO settings (NAME, VALUE) VALUES ('sup', 'true')");
         $settings4 = $mysql->prepare("INSERT INTO settings (NAME, VALUE) VALUES ('dev', 'true')");
         $settings5 = $mysql->prepare("INSERT INTO settings (NAME, VALUE) VALUES ('builder', 'true')");
+        $settings6 = $mysql->prepare("INSERT INTO settings (NAME, VALUE) VALUES ('age', '13')");
         $settings1->execute();
         $settings2->execute();
         $settings3->execute();
         $settings4->execute();
         $settings5->execute();
+        $settings6->execute();
         header("Location: step3.php");
         exit;
     } catch (PDOException $e){

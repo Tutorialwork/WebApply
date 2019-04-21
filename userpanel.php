@@ -11,7 +11,7 @@ if(!isset($_SESSION["username"])){
   <meta http-equiv="refresh" content="0; URL=login.php">
   <?php
   exit;
-} else if(getRankID($_SESSION["username"]) > 1){
+} else if(getRankID($_SESSION["username"]) > 0){
   ?>
   <meta http-equiv="refresh" content="0; URL=admincontrolpanel.php">
   <?php
