@@ -48,7 +48,6 @@ require('assets/languages/lang_'.getSetting("lang").'.php');
         $stmt->execute();
         while ($row = $stmt->fetch()) {
           if(password_verify($_POST["password"], $row["PASSWORD"])){
-            session_start();
             $_SESSION["username"] = $row["USERNAME"];
             updateLogin($row["USERNAME"]);
             ?>
@@ -152,10 +151,20 @@ require('assets/languages/lang_'.getSetting("lang").'.php');
         }
         if($data != 0){
           setResetToken($_POST["email"], $token);
-          $headers .= "Reply-To: ". strip_tags($_POST['email']) . "\r\n";
+          $headers = "Reply-To: ". strip_tags($_POST['email']) . "\r\n";
           $headers .= "MIME-Version: 1.0\r\n";
           $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-          mail($_POST["email"], EMAIL_TITLE, EMAIL, $headers);
+          $mail = mail($_POST["email"], EMAIL_TITLE, EMAIL, $headers);
+          if(!$mail){
+            ?>
+            <img src="assets/images/cross.png" alt="cross" id="status">
+            <?php echo SENDMAIL_ERR; ?>
+            <form>
+              <input type="text" value="apt-get install sendmail">
+            </form>
+            <?php
+            exit;
+          }
           ?>
           <script type="text/javascript">
           $.sweetModal({

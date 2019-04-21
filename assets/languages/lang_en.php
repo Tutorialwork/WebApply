@@ -51,6 +51,10 @@ $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if(isset($_POST["email"])){
   define("EMAIL", "Click the link below to reset your password. <br> $url?token=$token&email=".$_POST["email"]);
 }
+define("SENDMAIL_ERR", "<h1>Error</h1>
+<p>This function is currently disabled<br>
+To enable this function ask a admin to install the mail module.</p>
+<h3>Install mail module in Linux:</h3>");
 //////////////////////////////////////////
 // settings.php
 //////////////////////////////////////////

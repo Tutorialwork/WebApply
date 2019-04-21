@@ -48,7 +48,19 @@ if(!isset($_SESSION["username"])){
         ?>
         <img src="assets/images/tick.png" alt="icon" id="status">
         <?php echo PANEL_POSITIVE ?>
-        <p><i class="fas fa-calendar"></i> <?php echo INTERVIEW; ?>: <?php echo getInterviewdate(getApplyByAccountID(getAccountIDByUsername($_SESSION["username"]))); ?></p>
+        <p><i class="fas fa-calendar"></i> <?php echo INTERVIEW; ?>: <?php
+        $timestamp = strtotime(getInterviewdate(getApplyByAccountID(getAccountIDByUsername($_SESSION["username"]))));
+        echo displayTimestamp($timestamp);
+        ?>
+          <?php
+          if(getSetting("tsip") != "YourTSIP.com"){
+            $ts = str_replace(' ', '', getSetting("tsip"));
+            ?>
+            <a href="ts3server://<?php echo $ts; ?>" class="loginicon"><i class="fab fa-teamspeak"></i></i></a>
+            <?php
+          }
+          ?>
+        </p>
         <?php
       }
        ?>

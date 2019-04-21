@@ -100,9 +100,12 @@ if(!isset($_SESSION["username"])){
         //Fixed whitespaces
         $name = str_replace(' ', '', getSetting("name"));
         $age = str_replace(' ', '', getSetting("age"));
+        $ts = str_replace(' ', '', getSetting("tsip"));
          ?>
         <p><?php echo SERVERNAME ?></p>
         <input type="text" name="servername" placeholder="<?php echo SERVERNAME ?>" value="<?php echo htmlspecialchars($name); ?>" required>
+        <p>Teamspeak 3 IP</p>
+        <input type="text" name="ts" placeholder="IP" value="<?php echo htmlspecialchars($ts); ?>" required>
         <p><?php echo MINAGE; ?></p>
         <input type="text" name="age" placeholder="<?php echo FORM_AGE; ?>" value="<?php echo htmlspecialchars($age); ?>" required>
         <p><?php echo LANGUAGE ?></p>

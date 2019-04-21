@@ -46,6 +46,7 @@ isset($_SESSION["user"]) && isset($_SESSION["password"])){
     session_destroy();
     setSetting("lang", $_POST["lang"]);
     setSetting("name", $_POST["servername"]);
+    setSetting("tsip", $_POST["tsip"]);
     ?>
     <meta http-equiv="refresh" content="0; URL=../index.php">
     <?php
@@ -75,6 +76,7 @@ isset($_SESSION["user"]) && isset($_SESSION["password"])){
           <option value="de">German (Deutsch)</option>
         </select>
         <input type="text" name="servername" placeholder="Servername" required>
+        <input type="text" name="tsip" placeholder="Your Teamspeak IP">
         <button type="submit" name="submit">Finish</button>
       </form>
     </div>

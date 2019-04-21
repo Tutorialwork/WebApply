@@ -137,7 +137,7 @@ if(!isset($_SESSION["username"])){
           while ($row = $stmt->fetch()) {
             echo '<tr>
             <td>'.getUsernameByAccountID(getAccountIDByApply($row["ID"])).'</td>
-            <td>'.date("m/d/Y", $row["SUBMITDATE"]).'</td>
+            <td>'.displayTimestamp($row["SUBMITDATE"]).'</td>
             <td>'.ucfirst($row["APPLYRANK"]).'</td>
             <td>
               <form action="ajax.php?modal" method="post" id="'.$row["ID"].'">

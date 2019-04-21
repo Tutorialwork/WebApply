@@ -111,8 +111,8 @@ if(!isset($_SESSION["username"])){
               }
                ?>
             </select>
-            <p><?php echo REGDATE; ?>: <?php echo date("m/d/Y H:m", $row["FIRSTLOGIN"]) ?></p>
-            <p><?php echo LOGDATE; ?>: <?php echo date("m/d/Y H:m", $row["LASTLOGIN"]) ?></p>
+            <p><?php echo REGDATE; ?>: <?php echo displayTimestamp($row["FIRSTLOGIN"]) ?></p>
+            <p><?php echo LOGDATE; ?>: <?php echo displayTimestamp($row["LASTLOGIN"]) ?></p>
             <input type="hidden" name="id" value="<?php echo $row["ID"]; ?>">
             <button type="submit" name="submit"><?php echo SAVE ?></button>
           </form>
@@ -163,7 +163,7 @@ if(!isset($_SESSION["username"])){
             echo RANK_2;
           }
           echo '</td>
-          <td>'.date("m/d/Y", $row["LASTLOGIN"]).'</td>
+          <td>'.displayTimestamp($row["LASTLOGIN"]).'</td>
           <td>
             <form action="users.php" method="get" id="'.$row["ID"].'">
               <input type="hidden" name="id" value="'.$row["ID"].'">

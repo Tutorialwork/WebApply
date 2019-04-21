@@ -1,5 +1,5 @@
 <?php
-define("WEBAPPLY_VERSION", "2.0");
+define("WEBAPPLY_VERSION", "2.1");
 function getSetting($setting){
   require("mysql.php");
   $stmt = $mysql->prepare("SELECT * FROM settings WHERE NAME = :setting");
@@ -223,7 +223,8 @@ function updateLogin($username){
   require("mysql.php");
   $stmt = $mysql->prepare("UPDATE accounts SET LASTLOGIN = :value WHERE USERNAME = :user");
   $stmt->bindParam(":user", $username, PDO::PARAM_STR);
-  $stmt->bindParam(":value", time(), PDO::PARAM_STR);
+  $now = time();
+  $stmt->bindParam(":value", $now, PDO::PARAM_STR);
   $stmt->execute();
 }
 function getInterviewdate($applyid){
@@ -233,6 +234,13 @@ function getInterviewdate($applyid){
   $stmt->execute();
   while ($row = $stmt->fetch()) {
     return $row["INTERVIEWDATE"];
+  }
+}
+function displayTimestamp($time){
+  if(getSetting("lang") == "en"){
+    return date("m/d/Y h:i A", $time);
+  } else if(getSetting("lang") == "de"){
+    return date("d.m.Y H:i", $time);
   }
 }
 ?>

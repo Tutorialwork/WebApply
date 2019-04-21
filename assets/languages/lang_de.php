@@ -51,6 +51,10 @@ $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 if(isset($_POST["email"])){
   define("EMAIL", "Klicke auf den untenstehenden Link um ein neues Passwort zu setzen. <br> $url?token=$token&email=".$_POST["email"]);
 }
+define("SENDMAIL_ERR", "<h1>Fehler</h1>
+<p>Diese Funktion wurde deaktiviert.<br>
+Um diese Funktion zu aktivieren frage einen Admin, ob er das Mail Modul installiert.</p>
+<h3>Mail Modul in Linux installieren:</h3>");
 //////////////////////////////////////////
 // settings.php
 //////////////////////////////////////////
