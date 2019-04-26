@@ -4,8 +4,8 @@
 //////////////////////////////////////////
 define("INDEX_HEADLINE", "Apply");
 define("INDEX_DESC", "Welcome! <br><br>
-  On this page you can apply as a team member of our team.
-  Below you can see witch rank is currently in a applyphase.<br><br>
+  On this page you can apply for a position in our team.<br>
+  Below you can see which ranks are currently open for application.<br><br>
   Good luck with your application <br>
   ~ ".getSetting("name"));
 //////////////////////////////////////////
@@ -18,7 +18,7 @@ define("PANEL_NEGATIVE", "<p>Bad news :( <br>
 define("PANEL_POSITIVE", "<p>Good news :) <br>
   We have accepted your application.
 </p>");
-define("PANEL_NEUTRAL", "<p>Currently is your application in processing.</p><br>");
+define("PANEL_NEUTRAL", "<p>Your application is currently pending.</p><br>");
 //////////////////////////////////////////
 // login.php
 //////////////////////////////////////////
@@ -40,9 +40,9 @@ define("NEWPW_YOURACC", "Your account");
 define("NEWPW_ERR", "This link is invalid.");
 define("NEWPW_SUCCESS", "The password was successfully changed.");
 define("NEWPW_ERR_AUTH_TITLE", "Auth error");
-define("NEWPW_ERR_AUTH", "The Authentication failed.");
-define("NEWPW_ERR_PW_TITLE", "Passwords not match");
-define("NEWPW_ERR_PW", "The passwords are not match.");
+define("NEWPW_ERR_AUTH", "Authentication failed.");
+define("NEWPW_ERR_PW_TITLE", "Passwords did not match");
+define("NEWPW_ERR_PW", "The passwords did not match.");
 define("FORGOT_EMAIL_OK", "An email with a link to reset your password was send.");
 define("FORGOT_EMAIL_ERR", "This email is not registered.");
 define("EMAIL_TITLE", "Password reset");
@@ -120,9 +120,9 @@ define("INTERVIEW_BUTTON", "Set Interview");
 //////////////////////////////////////////
 define("APPLY", "Apply");
 define("DISABLED_TITLE", "Applications disabled");
-define("SUP_DISABLED", "Currently are applications for Supporter disabled.");
-define("DEV_DISABLED", "Currently are applications for Developer disabled.");
-define("BUILD_DISABLED", "Currently are applications for Builder disabled.");
+define("SUP_DISABLED", "Sorry, we are currently not looking for Supporters.");
+define("DEV_DISABLED", "Sorry, we are currently not looking for Developers.");
+define("BUILD_DISABLED", "Sorry, we are currently not looking for Builders.");
 define("FORM_USER", "Username");
 define("FORM_PW", "Password");
 define("FORM_AGE", "Age");
