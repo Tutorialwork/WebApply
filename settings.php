@@ -44,7 +44,7 @@ if(!isset($_SESSION["username"])){
         setSetting("dev", $_POST["dev"]);
         setSetting("builder", $_POST["builder"]);
         setSetting("age", $_POST["age"]);
-        setSetiing("tsip", $_POST["ts"]);
+        setSetting("tsip", $_POST["ts"]);
         ?>
         <script type="text/javascript">
         toastr.options = {
