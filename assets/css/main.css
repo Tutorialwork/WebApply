@@ -1,15 +1,17 @@
-.myButton, footer a{
-  transition:  all 300ms;
-  -webkit-transition: all 300ms;
-  -moz-transition: all 300ms;
-  -o-transition: all 300ms;
-}
-body{
-  padding: 0px;
-  margin: 0px;
-  font-family: 'Roboto', sans-serif;
+/*
+  Created by Tutorialwork
+  https://YouTube.com/Tutorialwork
+  © 2019 - WebApply
+*/
+html, body{
+  font-family: Arial;
+  background-color: #212121;
+  margin: 0;
+  padding: 0;
+  width: 100%;
   height: 100%;
 }
+<<<<<<< HEAD
 hr{
   height: 5px;
   width: 15%;
@@ -35,153 +37,226 @@ hr{
   margin-right: 2px;
   padding: 20px;
   box-sizing: border-box;
+=======
+.content{
+  color: #263238;
+  background-color: #F5F5F5;
+  border-radius: 25px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding: 40px;
+  width: 350px;
 }
-.box:last-child{
-  margin-right: 0;
+.content h1{
+  font-size: 40px;
+  position: relative;
+  font-weight: 300;
+  display: inline-block;
 }
-p{
-  font-size: 20px;
+.content h5{
+  font-size: 30px;
+  position: relative;
+  font-weight: 300;
+  display: inline-block;
 }
+.content p{
+  font-size: 17px;
+}
+#pw{
+  text-decoration: none;
+  color: #1E88E5;
+  font-size: 17px;
+>>>>>>> 0e1797c69a66d61ee35caac157ebb0c33022d702
+}
+#pw{
+  transition: all 0.2s;
+  color: #3949AB;
+}
+.content hr{
+  border-top: 1px dashed #8c8b8b;
+}
+<<<<<<< HEAD
 h1{
     margin: .67em 0;
   font-size: 2em;
-}
-h5{
-  font-size: 35px;
-}
-section{
-  width:100%;
-	height: 100vh;
-  min-height: 100%;
-  min-width: 100%;
-}
-#home h1{
-  margin-top: 15%;
-  font-size: 100px;
-}
-#home h5{
-  font-size: 70px;
-}
-#home{
-  background: url("https://cdn.discordapp.com/attachments/253559149126746112/473913954595504129/background.png");
-  background-repeat: no-repeat;
-  color: white;
-}
-.myButton {
-	background-color:#44c767;
-	-moz-border-radius:28px;
-	-webkit-border-radius:28px;
-	border-radius:28px;
-	border:1px solid #18ab29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:21px;
-	font-weight:bold;
-	padding:16px 31px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #2f6627;
-}
-.myButton:hover {
-	background-color:#5cbf2a;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-#invisible{
-  width: 0;
-  height: 0;
-  color: green;
-}
-footer{
-  padding: 10px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 30px;
-  background-color: #373737;
-  color: white;
-  text-align: center;
-  padding-top: 30px;
-  margin-top: 100px;
-}
-footer a{
+=======
+.btn{
   text-decoration: none;
-  color: #4286f4;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid black;
+  color: black;
+>>>>>>> 0e1797c69a66d61ee35caac157ebb0c33022d702
 }
-footer a:hover{
-  color: #1651af;
+.btn:hover{
+  color: white;
+  background-color: black;
+  transition: all 0.2s;
 }
-form input, select, textarea{
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size: 15px;
-  margin-bottom: 10px;
-  border-radius: 2px;
-  border: 2px solid;
-  border-color: #494949;
-  outline: none;
+.btn-red{
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid #c0392b;
+  color: black;
 }
-form input:first-child{
-  margin-top: 10px;
+.btn-red:hover{
+  color: white;
+  background-color: #e74c3c;
+  transition: all 0.2s;
+}
+.btn-green{
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid #27ae60;
+  color: black;
+}
+.btn-green:hover{
+  color: white;
+  background-color: #2ecc71;
+  transition: all 0.2s;
 }
 form input{
-  width: 500px;
-  height: 30px;
-  padding-left: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 3px solid #263238;
+  outline: none;
+  width: 325px;
 }
-form select{
-  width: 500px;
-  height: 30px;
+form input:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+}
+form input:disabled{
+  background-color: #95a5a6;
+  color: white;
 }
 form textarea{
-  width: 500px;
-  height: 80px;
-  padding-left: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 3px solid #263238;
+  outline: none;
+  width: 325px;
+  resize: none;
+  font-family: Arial;
 }
-.input{
-  color: #494949;
-  padding-left: 20px;
+form textarea:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
 }
-label{
-  color: grey;
-  font-size: 10px;
+form button{
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 10px;
+  border: 3px solid #263238;
+  color: black;
+  margin-top: 10px;
+  width: 350px;
+  font-size: 20px;
+  color: #263238;
 }
-#apply{
-  padding-bottom: 100px;
+form button:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+  background-color: #263238;
+  color: white;
 }
-.info {
+.iconbutton{
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: white;
+  padding: 3px;
+  border: 3px solid #263238;
+  color: black;
+  margin-top: 10px;
+  width: 50px;
+  font-size: 20px;
+  color: #263238;
+}
+.iconbutton:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+  background-color: #263238;
+  color: white;
+}
+#status{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+table{
+  background-color: black;
+}
+tr{
+  background-color: #212121;
+  color: white;
+}
+td{
   padding: 5px;
-  border: 1px solid #DEDEDE;
-  margin: 5px 0;
-  background: #EFEFEF;
-  color: #222222;
-  text-align: center;
+  background-color: white;
+  color: black;
 }
-.warning {
-  padding: 5px;
-  border: 1px solid #DEDEDE;
-  margin: 5px 0;
-  background: #FFFFCC;
-  color: #222222;
-  text-align: center;
+.error{
+  background-color: #ff6b81;
+  padding: 20px;
+  border: 4px solid #ff4757;
+  border-radius: 7px;
+  color: #2f3542,
 }
-.success {
-  padding: 5px;
-  border: 1px solid #349534;
-  margin: 5px 0;
-  background: #C9FFCA;
-  color: #008000;
-  font-weight: bold;
-  text-align: center;
+.success{
+  background-color: #7bed9f;
+  padding: 20px;
+  border: 4px solid #2ed573;
+  border-radius: 7px;
+  color: #57606f;
 }
-.error {
-  padding: 5px;
-  border: 1px solid #CC0000;
-  margin: 5px 0;
-  background: #F7CBCA;
-  color: #CC0000;
-  font-weight: bold;
+.loginicon{
+  float: right;
+  color: black;
+  margin-left: 7px;
+}
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li{
+  background-color: #dcdde1;
+  padding: 7px;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
   text-align: center;
+  display: inline;
+  margin-right: 3px;
+}
+li:hover{
+  transition: all 0.2s;
+  border: 3px solid #212121;
+  background-color: #263238;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+li a:hover{
+  color: white;
+}
+.active a{
+  color: white;
+}
+.active{
+  background: #263238;
 }
