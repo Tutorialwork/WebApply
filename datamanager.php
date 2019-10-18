@@ -1,5 +1,5 @@
 <?php
-define("WEBAPPLY_VERSION", "2.1.1");
+define("WEBAPPLY_VERSION", "2.1.3");
 function getSetting($setting){
   require("mysql.php");
   $stmt = $mysql->prepare("SELECT * FROM settings WHERE NAME = :setting");
