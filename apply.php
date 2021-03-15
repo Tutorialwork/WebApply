@@ -94,11 +94,11 @@ if(isset($_GET["type"])){
       <hr>
       <p>
       <form id="supporter" action="ajax.php?sendapply" method="post">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="username" placeholder="<?php echo FORM_USER; ?>" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="<?php echo FORM_PW; ?>" required>
-        <input type="number" name="age" placeholder="<?php echo FORM_AGE; ?>" required>
+        <input type="text" name="name" placeholder="Real Name" required>
+        <input type="text" name="username" placeholder="Account Username" required>
+        <input type="email" name="email" placeholder="Account Email" required>
+        <input type="password" name="password" placeholder="Account Password (How you will login to your account.)" required>
+        <input type="number" name="age" placeholder="Your Age" required>
         <textarea name="apply" rows="20" cols="40" placeholder="<?php echo FORM_APPLY; ?>" required></textarea>
         <input type="hidden" name="type" value="<?php echo $_GET["type"] ?>">
         <button type="submit" name="submit"><?php echo APPLY; ?></button>

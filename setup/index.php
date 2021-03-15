@@ -63,27 +63,6 @@ session_start();
       <?php
       require("../datamanager.php");
       $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-      if(!strpos($url, "bplaced")){
-        if(file_get_contents("https://api.spigotmc.org/legacy/update.php?resource=60292") != WEBAPPLY_VERSION){
-          ?>
-          <img src="../assets/images/cross.png" alt="cross" id="status">
-          <h1>Update</h1>
-          <p>You currently have the version <strong><?php echo WEBAPPLY_VERSION ?></strong>. <br>
-          Please download the latest version of WebApply to get all new awesome features.</p>
-          <br>
-          <a href="https://www.spigotmc.org/resources/webapply.60292/" class="btn">Update</a>
-          <?php
-          exit;
-        }
-      } else {
-        //Bplaced blocks file_get_contents function
-        //Skip update checker
-        ?>
-        <div class="error">
-          Bplaced is blocking the update checker. You use currently <strong><?php echo WEBAPPLY_VERSION; ?></strong>, please check manually if this is the newest version.
-        </div>
-        <?php
-      }
        ?>
       <h1>Setup</h1>
       <p>Welcome to the setup of WebApply. Thanks that you choose my plugin.
